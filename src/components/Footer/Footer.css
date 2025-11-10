@@ -1,15 +1,16 @@
 .footer {
   background-color: #b89d72;
   color: white;
-  padding: 2rem 0 1rem;
+  padding: 3rem 0 1rem;
   margin-top: 3rem;
+  width: 100%;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   gap: 2rem;
   padding: 0 2rem;
 }
@@ -22,6 +23,7 @@
 .footer-column h3 {
   margin: 0 0 1rem;
   font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .footer-column ul {
@@ -38,22 +40,105 @@
   color: white;
   text-decoration: none;
   transition: color 0.2s;
+  font-size: 0.95rem;
 }
 
 .footer-column a:hover {
   color: #f0f0f0;
+  text-decoration: underline;
 }
 
 .description {
   line-height: 1.5;
   font-size: 0.95rem;
   color: #f9f9f9;
+  max-width: 250px;
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.3);
   font-size: 0.9rem;
+  color: #f9f9f9;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0 1rem;
+    margin: 2rem 1rem 0;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+
+  .footer-column:first-child {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  .description {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    margin: 2rem 0.5rem 0;
+    border-radius: 12px 12px 0 0;
+    padding: 1.5rem 0 1rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .footer-column {
+    text-align: center;
+  }
+
+  .footer-column h3 {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-bottom {
+    margin-top: 2rem;
+    padding-top: 1rem;
+  }
+}
+
+/* Tambahan untuk rounded corners dan spacing */
+.footer {
+  border-radius: 20px 20px 0 0;
+  margin: 3rem 1rem 0;
+}
+
+/* Untuk desktop - lebih banyak space di samping */
+@media (min-width: 769px) {
+  .footer {
+    margin: 3rem 2rem 0;
+  }
+}
+
+/* Untuk tablet */
+@media (max-width: 768px) and (min-width: 481px) {
+  .footer {
+    margin: 2rem 1.5rem 0;
+  }
 }

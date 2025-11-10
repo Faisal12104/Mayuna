@@ -6,6 +6,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
+        {/* Column 1 - Logo dan Deskripsi */}
         <div className="footer-column">
           <div className="logo">
             <img src={Logo} alt="Mayuna by Irmayunia" />
@@ -15,6 +16,7 @@ const Footer = () => {
           </p>
         </div>
 
+        {/* Column 2 - Company */}
         <div className="footer-column">
           <h3>Company</h3>
           <ul>
@@ -23,6 +25,7 @@ const Footer = () => {
           </ul>
         </div>
 
+        {/* Column 3 - Customer Services */}
         <div className="footer-column">
           <h3>Customer Services</h3>
           <ul>
@@ -33,6 +36,7 @@ const Footer = () => {
           </ul>
         </div>
 
+        {/* Column 4 - Our Information */}
         <div className="footer-column">
           <h3>Our Information</h3>
           <ul>
@@ -41,6 +45,7 @@ const Footer = () => {
           </ul>
         </div>
 
+        {/* Column 5 - Contact Info */}
         <div className="footer-column">
           <h3>Contact Info</h3>
           <ul>
@@ -49,6 +54,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+      
       <div className="footer-bottom">
         <p>Copyright © 2025 Mayuna by Irmayunia</p>
       </div>
