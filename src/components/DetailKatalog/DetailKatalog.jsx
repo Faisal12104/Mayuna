@@ -1,10 +1,12 @@
-// D:\Kodingan\Mayuna\src\components\DetailKatalog\DetailKatalog.jsx
-
 import React from 'react';
 import './DetailKatalog.css';
+import KatalogImage from '../../assets/Katalog.png';
+import Thumbnail1 from '../../assets/Katalog1.png';
+import Thumbnail2 from '../../assets/Katalog2.png';
+import Thumbnail3 from '../../assets/Katalog3.png';
+import Thumbnail4 from '../../assets/Katalog4.png';
 
 const DetailKatalog = () => {
-  // Data dummy untuk produk
   const product = {
     category: "Blouse",
     name: "Blouse Cantik",
@@ -19,23 +21,30 @@ const DetailKatalog = () => {
     sku: "BL001",
     tags: ["Formal", "Casual", "Family", "Premium"],
     images: [
-      "https://via.placeholder.com/600x800?text=Main+Image",
-      "https://via.placeholder.com/150x200?text=Gallery+1",
-      "https://via.placeholder.com/150x200?text=Gallery+2",
-      "https://via.placeholder.com/150x200?text=Gallery+3",
-      "https://via.placeholder.com/150x200?text=Gallery+4"
+      KatalogImage,
+      Thumbnail1,
+      Thumbnail2,
+      Thumbnail3,
+      Thumbnail4
     ]
   };
 
   return (
     <main className="detail-katalog-content">
       <div className="product-grid">
-        {/* Gambar Utama */}
-        <div className="main-image">
-          <img src={product.images[0]} alt={product.name} />
+        <div className="image-section">
+          <div className="main-image">
+            <img src={product.images[0]} alt={product.name} />
+          </div>
+          <div className="gallery-thumbs">
+            {product.images.slice(1).map((img, index) => (
+              <div key={index} className="thumb-item">
+                <img src={img} alt={`Thumbnail ${index + 1}`} />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Detail Produk */}
         <div className="product-info">
           <p className="category">{product.category}</p>
           <h1 className="product-title">{product.name}</h1>
@@ -50,7 +59,6 @@ const DetailKatalog = () => {
 
           <p className="description">{product.description}</p>
 
-          {/* Warna */}
           <div className="color-section">
             <label>Warna : {product.color}</label>
             <div className="color-options">
@@ -64,7 +72,6 @@ const DetailKatalog = () => {
             </div>
           </div>
 
-          {/* Ukuran */}
           <div className="size-section">
             <label>Size : {product.size}</label>
             <div className="size-options">
@@ -79,29 +86,18 @@ const DetailKatalog = () => {
             </div>
           </div>
 
-          {/* Tombol Aksi */}
           <div className="action-buttons">
             <button className="btn-chat">Chat Penjual</button>
             <button className="btn-cart">Tambah Ke Keranjang</button>
             <button className="btn-buy">Beli Sekarang</button>
           </div>
 
-          {/* Info Tambahan */}
           <div className="product-meta">
             <div><strong>SKU :</strong> {product.sku}</div>
             <div><strong>Tags :</strong> {product.tags.join(', ')}</div>
             <div><strong>Share :</strong> [Icon Share]</div>
           </div>
         </div>
-      </div>
-
-      {/* Gallery Mini */}
-      <div className="gallery-thumbs">
-        {product.images.slice(1).map((img, index) => (
-          <div key={index} className="thumb-item">
-            <img src={img} alt={`Thumbnail ${index + 1}`} />
-          </div>
-        ))}
       </div>
     </main>
   );

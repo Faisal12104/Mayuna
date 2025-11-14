@@ -3,16 +3,20 @@ import Header from "./components/Header/Header";
 import HomePage from "./components/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
 import DetailKatalog from "./components/DetailKatalog/DetailKatalog";
+import ComingSoon from "./components/ComingSoon/ComingSoon";
+import './App.css';
 
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
-        {/* Halaman utama */}
         <Route path="/" element={<HomePage />} />
-        {/* Halaman detail produk */}
         <Route path="/detail-katalog" element={<DetailKatalog />} />
+        <Route path="/catalog" element={<ComingSoon />} />
+        <Route path="/cart" element={<ComingSoon />} />
+        <Route path="/payment" element={<ComingSoon />} />
+        <Route path="/order" element={<ComingSoon />} />
       </Routes>
       <Footer />
     </Router>
