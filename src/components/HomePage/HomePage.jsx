@@ -1,11 +1,19 @@
 import React from 'react';
 import './HomePage.css';
+import { useNavigate } from 'react-router-dom';
 import BajuImage from '../../assets/Blouse 01.png';
 
-// Komponen Card Produk (inline karena hanya dipakai di HomePage)
+// Komponen Card Produk
 const ProductCard = ({ image, category, name, price }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    // Arahkan ke halaman detail katalog
+    navigate("/detail-katalog");
+  };
+
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={handleClick} style={{ cursor: 'pointer' }}>
       <img src={image} alt={name} />
       <div className="product-info">
         <span className="category">{category}</span>
@@ -51,16 +59,21 @@ const HomePage = () => {
           <div className="active-filters">
             <h3>Filter Aktif</h3>
             <div className="filter-tags">
-              <span className="filter-tag">Harga: Rp1.000.000 - Rp2.000.000 <span className="remove">x</span></span>
-              <span className="filter-tag">Terlaris <span className="remove">x</span></span>
+              <span className="filter-tag">
+                Harga: Rp1.000.000 - Rp2.000.000 <span className="remove">x</span>
+              </span>
+              <span className="filter-tag">
+                Terlaris <span className="remove">x</span>
+              </span>
             </div>
           </div>
 
           <div className="products-grid">
-            {products.map(product => (
+            {products.map((product) => (
               <ProductCard key={product.id} {...product} />
             ))}
           </div>
+
           <div className="pagination">
             <button>{"<"}</button>
             <button className="active">1</button>
@@ -68,9 +81,10 @@ const HomePage = () => {
             <button>3</button>
             <span>...</span>
             <button>{">"}</button>
-            </div>
-            </div>
-            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Suggestion Section */}
       <div className="suggestion-section">
         <h2>Punya saran atau ide? Yuk, kasih tahu kami!</h2>
