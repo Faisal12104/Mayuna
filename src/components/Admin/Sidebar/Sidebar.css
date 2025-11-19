@@ -1,0 +1,144 @@
+.sidebar {
+  width: 260px;
+  background: #b29664;
+  color: white;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Gambar - Ukuran Asli */
+.logo {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.logo-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Menu */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.menu li:hover,
+.menu li.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.menu .menu-item {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu .menu-title {
+  flex-grow: 1;
+}
+
+.menu .arrow {
+  font-size: 12px;
+  transition: transform 0.2s;
+}
+
+.menu .arrow.open {
+  transform: rotate(180deg);
+}
+
+.menu .submenu {
+  display: none;
+  padding-left: 30px;
+  margin-top: 5px;
+}
+
+.menu .submenu li {
+  padding: 8px 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu .icon {
+  font-size: 16px;
+}
+
+/* Highlight Submenu Item */
+.menu .submenu li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Logout Section */
+.logout-section {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s;
+}
+
+.logout-section:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.logout-icon {
+  font-size: 18px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    padding: 10px 0;
+  }
+  .logo-image {
+    max-width: 60px;
+    height: auto;
+  }
+  .menu li {
+    padding: 10px 12px;
+    justify-content: center;
+    font-size: 14px;
+  }
+  .menu .menu-title {
+    display: none;
+  }
+  .menu .arrow {
+    display: none;
+  }
+  .menu .submenu {
+    display: none !important;
+  }
+  .logout-section {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}

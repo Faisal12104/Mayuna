@@ -1,25 +1,62 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header/Header";
+import DefaultLayout from "./components/Layout/DefaultLayout";
+import AdminLayout from "./components/Layout/AdminLayout";
 import HomePage from "./components/HomePage/HomePage";
-import Footer from "./components/Footer/Footer";
+import Admin from "./components/Admin/Dashboard/Dashboard";
 import DetailKatalog from "./components/DetailKatalog/DetailKatalog";
 import Payment from "./components/Payment/Payment";
 import ComingSoon from "./components/ComingSoon/ComingSoon";
+import Pemesanan from "./components/Pemesanan/Pemesanan";
 import './App.css';
 
 function App() {
   return (
     <Router>
-      <Header />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/detail-katalog" element={<DetailKatalog />} />
-        <Route path="/catalog" element={<ComingSoon />} />
-        <Route path="/cart" element={<ComingSoon />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/order" element={<ComingSoon />} />
+        {/* Routes dengan Header & Footer (DefaultLayout) */}
+        <Route path="/" element={
+          <DefaultLayout>
+            <HomePage />
+          </DefaultLayout>
+        } />
+        
+        <Route path="/detail-katalog" element={
+          <DefaultLayout>
+            <DetailKatalog />
+          </DefaultLayout>
+        } />
+        
+        <Route path="/catalog" element={
+          <DefaultLayout>
+            <ComingSoon />
+          </DefaultLayout>
+        } />
+        
+        <Route path="/cart" element={
+          <DefaultLayout>
+            <ComingSoon />
+          </DefaultLayout>
+        } />
+        
+        <Route path="/payment" element={
+          <DefaultLayout>
+            <Payment />
+          </DefaultLayout>
+        } />
+        
+        <Route path="/order" element={
+          <DefaultLayout>
+            <Pemesanan />
+          </DefaultLayout>
+        } />
+        
+        {/* Route admin TANPA Header & Footer (AdminLayout) */}
+        <Route path="/admin" element={
+          <AdminLayout>
+            <Admin />
+          </AdminLayout>
+        } />
       </Routes>
-      <Footer />
     </Router>
   );
 }
