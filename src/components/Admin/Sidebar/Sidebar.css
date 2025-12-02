@@ -11,12 +11,14 @@
   left: 0;
   top: 0;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 /* Logo Gambar - Ukuran Asli */
 .logo {
   text-align: center;
   margin-bottom: 40px;
+  flex-shrink: 0;
 }
 
 .logo-image {
@@ -26,6 +28,33 @@
   object-position: center;
   display: block;
   margin: 0 auto;
+}
+
+/* Container untuk menu yang bisa di-scroll */
+.menu-container {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+}
+
+/* Custom scrollbar untuk menu */
+.menu-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.menu-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.menu-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.menu-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
 }
 
 /* Menu */
@@ -38,16 +67,24 @@
 .menu li {
   padding: 12px 24px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
   display: flex;
   align-items: center;
   gap: 10px;
   font-size: 16px;
+  color: #000000;
+  font-weight: 700;
+  justify-content: flex-start;
 }
 
-.menu li:hover,
-.menu li.active {
+.menu li:hover {
   background: rgba(255, 255, 255, 0.15);
+}
+
+/* Item menu yang aktif - Warna putih */
+.menu li.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF !important;
 }
 
 .menu .menu-item {
@@ -55,23 +92,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
+/* Menu title untuk semua item */
 .menu .menu-title {
   flex-grow: 1;
+  color: #000000;
+  font-weight: 700;
+  text-align: left;
+  margin-left: 0;
+  transition: color 0.2s;
+}
+
+/* Menu title yang aktif */
+.menu li.active .menu-title {
+  color: #FFFFFF !important;
 }
 
 .menu .arrow {
   font-size: 12px;
   transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.menu .arrow.open {
+.menu .arrow-image {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+}
+
+/* Rotasi 180 derajat saat menu terbuka */
+.menu .arrow-image.open {
   transform: rotate(180deg);
 }
 
+/* Submenu */
 .menu .submenu {
-  display: none;
   padding-left: 30px;
   margin-top: 5px;
 }
@@ -82,15 +143,50 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  color: #000000;
+  font-weight: 600;
+  justify-content: flex-start;
+  transition: color 0.2s;
+}
+
+.menu .submenu li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Item submenu yang aktif - Warna putih */
+.menu .submenu li.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF !important;
 }
 
 .menu .icon {
   font-size: 16px;
 }
 
-/* Highlight Submenu Item */
-.menu .submenu li:hover {
-  background: rgba(255, 255, 255, 0.1);
+/* Style untuk icon gambar */
+.menu .icon-image {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+  transition: filter 0.2s;
+}
+
+/* Filter untuk icon saat item aktif */
+.menu li.active .icon-image,
+.menu .submenu li.active .submenu-icon {
+  filter: brightness(0) invert(1); /* Membuat icon putih */
+}
+
+/* Style untuk icon submenu (Data.png) */
+.menu .submenu-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: inline-block;
+  flex-shrink: 0;
+  transition: filter 0.2s;
 }
 
 /* Logout Section */
@@ -102,15 +198,32 @@
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
   font-size: 16px;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
+  color: #000000;
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
 .logout-section:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.logout-icon {
-  font-size: 18px;
+.logout-section.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF !important;
+}
+
+/* Styling untuk gambar logout */
+.logout-icon-image {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  transition: filter 0.2s;
+}
+
+/* Filter untuk gambar logout saat aktif */
+.logout-section.active .logout-icon-image {
+  filter: brightness(0) invert(1); /* Membuat icon logout putih */
 }
 
 /* Responsif */
@@ -123,10 +236,16 @@
     max-width: 60px;
     height: auto;
   }
+  .menu-container {
+    padding-right: 0;
+  }
   .menu li {
     padding: 10px 12px;
     justify-content: center;
     font-size: 14px;
+  }
+  .menu li.active {
+    background: rgba(255, 255, 255, 0.2);
   }
   .menu .menu-title {
     display: none;
@@ -134,11 +253,38 @@
   .menu .arrow {
     display: none;
   }
+  .menu .arrow-image {
+    display: none;
+  }
   .menu .submenu {
     display: none !important;
+  }
+  .menu .icon-image {
+    width: 18px;
+    height: 18px;
+    opacity: 1 !important;
+    margin: 0 auto;
+  }
+  .menu li.active .icon-image {
+    filter: brightness(0) invert(1);
+  }
+  .menu .submenu-icon {
+    width: 14px;
+    height: 14px;
   }
   .logout-section {
     padding: 10px 12px;
     font-size: 14px;
+    justify-content: center;
+  }
+  .logout-section span:first-child {
+    display: none;
+  }
+  .logout-icon-image {
+    width: 18px;
+    height: 18px;
+  }
+  .logout-section.active .logout-icon-image {
+    filter: brightness(0) invert(1);
   }
 }
